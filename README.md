@@ -15,3 +15,13 @@ Steps:
 	- Create `.nuspec` file using nuget CLI, then `.nupkg` file
 - Load created `.nupkg` to Orchestrator or to local packages folder (`C:\Program Files\UiPath\Studio\Packages`)
 - Install package from package manager
+
+## Alternatives
+Rather than using this custom C# CodeActivity, a raw access token can be generated using `gcloud` ([docs](https://cloud.google.com/sdk/gcloud/reference/auth/print-access-token)) via PowerShell or Command Line:
+
+```shell
+gcloud auth activate-service-account SERVICE_ACCOUNT@DOMAIN.COM --key-file=/path/key.json --project=PROJECT_ID
+gcloud auth print-access-token --scopes=SCOPES
+```
+
+_NOTE: The `--scopes` flag for `print-access-token` is not currently listed in the public documentation (as of October 2023), but is supported_
